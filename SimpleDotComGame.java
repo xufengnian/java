@@ -1,24 +1,24 @@
-//»÷³ÁÕ½½¢¼òµ¥°æĞ¡ÓÎÏ·
-//¹æÔò£ºÓÎÏ·Ëæ»úÉú³É0µ½6Ö®¼äµÄÁ¬Ğø3¸öÊı×Ö£¬Íæ¼ÒÃ¿´ÎÊäÈëÒ»¸öÊı×Ö£¬ÈôÇ¡ºÃÊäÈëÁËÉú³ÉµÄËæ»úÊı£¬ÔòÏÔÊ¾hit,·´Ö®ÏÔÊ¾miss.
-//3¸öÊı¶¼hit,ÔòÓÎÏ·½áÊø£¬ÏÔÊ¾kill£¬²¢ÏÔÊ¾Íæ¼Ò²Â²âµÄ´ÎÊı
-import java.io.*;//ÒıÈëio¿â£¬±ãÓÚ´¦ÀíÍæ¼ÒÊäÈë
-public class SimpleDotComGame {//ÓÎÏ·Ö÷º¯ÊıËùÔÚÀà
+//å‡»æ²‰æˆ˜èˆ°ç®€å•ç‰ˆå°æ¸¸æˆ
+//è§„åˆ™ï¼šæ¸¸æˆéšæœºç”Ÿæˆ0åˆ°6ä¹‹é—´çš„è¿ç»­3ä¸ªæ•°å­—ï¼Œç©å®¶æ¯æ¬¡è¾“å…¥ä¸€ä¸ªæ•°å­—ï¼Œè‹¥æ°å¥½è¾“å…¥äº†ç”Ÿæˆçš„éšæœºæ•°ï¼Œåˆ™æ˜¾ç¤ºhit,åä¹‹æ˜¾ç¤ºmiss.
+//3ä¸ªæ•°éƒ½hit,åˆ™æ¸¸æˆç»“æŸï¼Œæ˜¾ç¤ºkillï¼Œå¹¶æ˜¾ç¤ºç©å®¶çŒœæµ‹çš„æ¬¡æ•°
+import java.io.*;//å¼•å…¥ioåº“ï¼Œä¾¿äºå¤„ç†ç©å®¶è¾“å…¥
+public class SimpleDotComGame {//æ¸¸æˆä¸»å‡½æ•°æ‰€åœ¨ç±»
 	public static void main(String[] args){
-		int numOfGuess=0;//Íæ¼Ò²Â²âÊı
-		GameHelper helper=new GameHelper();//Éú³ÉÓÎÏ·°ïÖú¶ÔÏó£¬ÓÃÓÚºÍÍæ¼Ò½»»¥£¬²¢´¦ÀíÍæ¼ÒÊäÈëÊı×Ö
+		int numOfGuess=0;//ç©å®¶çŒœæµ‹æ•°
+		GameHelper helper=new GameHelper();//ç”Ÿæˆæ¸¸æˆå¸®åŠ©å¯¹è±¡ï¼Œç”¨äºå’Œç©å®¶äº¤äº’ï¼Œå¹¶å¤„ç†ç©å®¶è¾“å…¥æ•°å­—
 		
-		SimpleDotCom theDotCom=new SimpleDotCom();//Éú³ÉÓÎÏ·´¦Àí¶ÔÏó£¬¸ºÔğÅĞ¶ÏÍæ¼ÒÊäÈëÊı×ÖµÄÀàĞÍ×ª»»ºÍÅĞ¶¨£¬²¢Éú³ÉÅĞ¶¨½á¹û
-		int randomNum=(int) (Math.random()*5);//Éú³É³õÊ¼Ëæ»úÊı£¬´Ó0µ½4
+		SimpleDotCom theDotCom=new SimpleDotCom();//ç”Ÿæˆæ¸¸æˆå¤„ç†å¯¹è±¡ï¼Œè´Ÿè´£åˆ¤æ–­ç©å®¶è¾“å…¥æ•°å­—çš„ç±»å‹è½¬æ¢å’Œåˆ¤å®šï¼Œå¹¶ç”Ÿæˆåˆ¤å®šç»“æœ
+		int randomNum=(int) (Math.random()*5);//ç”Ÿæˆåˆå§‹éšæœºæ•°ï¼Œä»0åˆ°4
 		
-		int[] locations={randomNum,randomNum+1,randomNum+2};//ÉùÃ÷3¸öÁ¬ĞøËæ»úÊıµÄÊı×é
-		theDotCom.setlocationCells(locations);//µ÷ÓÃset·½·¨½«3¸öËæ»úÊı½»¸øtheDotComÀà
-		boolean isAlive=true;//ÉùÃ÷isAlive±äÁ¿ÓÃÓÚÑ­»·½áÊøÅĞ¶¨
+		int[] locations={randomNum,randomNum+1,randomNum+2};//å£°æ˜3ä¸ªè¿ç»­éšæœºæ•°çš„æ•°ç»„
+		theDotCom.setlocationCells(locations);//è°ƒç”¨setæ–¹æ³•å°†3ä¸ªéšæœºæ•°äº¤ç»™theDotComç±»
+		boolean isAlive=true;//å£°æ˜isAliveå˜é‡ç”¨äºå¾ªç¯ç»“æŸåˆ¤å®š
 		
-		while(isAlive==true){//true±íÃ÷Íæ¼ÒÈÔÎ´½áÊøÓÎÏ·£¬Õ½½¢Î´kill
-			String guess=helper.getUserInput("enter a number");//ÈÃGameHelperÀàÏÔÊ¾µÄÌáÊ¾ĞÅÏ¢Îª¡°enter a number¡±
-			String result=theDotCom.CheckYourself(guess);//µ÷ÓÃtheDotComÀàµÄCheckYourselfÓÃÓÚÅĞ¶¨Íæ¼ÒµÄÊäÈëÊı×Ö
-			numOfGuess++;//Íæ¼ÒÊäÈëÊı×Öºó£¬²Â²âÊı¼ÓÒ»
-			if(result.equals("kill")){//Èô·µ»Ø½á¹ûÎªkill,ËµÃ÷Õ½½¢ÒÑ³ÁÃ»£¬ÏÔÊ¾Íæ¼ÒµÄ²Â²âÊı
+		while(isAlive==true){//trueè¡¨æ˜ç©å®¶ä»æœªç»“æŸæ¸¸æˆï¼Œæˆ˜èˆ°æœªkill
+			String guess=helper.getUserInput("enter a number");//è®©GameHelperç±»æ˜¾ç¤ºçš„æç¤ºä¿¡æ¯ä¸ºâ€œenter a numberâ€
+			String result=theDotCom.CheckYourself(guess);//è°ƒç”¨theDotComç±»çš„CheckYourselfç”¨äºåˆ¤å®šç©å®¶çš„è¾“å…¥æ•°å­—
+			numOfGuess++;//ç©å®¶è¾“å…¥æ•°å­—åï¼ŒçŒœæµ‹æ•°åŠ ä¸€
+			if(result.equals("kill")){//è‹¥è¿”å›ç»“æœä¸ºkill,è¯´æ˜æˆ˜èˆ°å·²æ²‰æ²¡ï¼Œæ˜¾ç¤ºç©å®¶çš„çŒœæµ‹æ•°å­—
 				isAlive=false;
 				System.out.println("You took "+numOfGuess+" guesses");
 			}
@@ -27,38 +27,38 @@ public class SimpleDotComGame {//ÓÎÏ·Ö÷º¯ÊıËùÔÚÀà
 
 }
 
-class SimpleDotCom {//ÓÎÏ·Âß¼­´¦ÀíÅĞ¶¨Àà
-	int[] locationCells;//ÉùÃ÷Êı×éÓÃÓÚ´æ·ÅÕ½½¢ËùÔÚÎ»ÖÃ
-	int numOfHits=0;//ÉùÃ÷int±äÁ¿´æ·ÅÕ½½¢±»´ò»÷µÄ´ÎÊı
+class SimpleDotCom {//æ¸¸æˆé€»è¾‘å¤„ç†åˆ¤å®šç±»
+	int[] locationCells;//å£°æ˜æ•°ç»„ç”¨äºå­˜æ”¾æˆ˜èˆ°æ‰€åœ¨ä½ç½®
+	int numOfHits=0;//å£°æ˜intå˜é‡å­˜æ”¾æˆ˜èˆ°è¢«æ‰“å‡»çš„æ¬¡æ•°
 	
-	public void setlocationCells (int[] locs ){//set·½·¨½«Ëæ»úÊı×é¸³ÓèÕ½½¢Î»ÖÃÊı×é
+	public void setlocationCells (int[] locs ){//setæ–¹æ³•å°†éšæœºæ•°ç»„èµ‹äºˆæˆ˜èˆ°ä½ç½®æ•°ç»„
 		locationCells=locs;		
 	}
 	
-	public String CheckYourself (String UserGuess){//ÅĞ¶¨
-		int guess=Integer.parseInt(UserGuess);//Ç¿ÖÆ½«Íæ¼ÒÊäÈë×Ö·ûĞÍÊı¾İ×ª»»³ÉÊı×ÖĞÍ
-		String result="miss";//Ä¬ÈÏÅĞ¶¨Îªmiss
-		for (int cell :locationCells){//¼ÓÇ¿ĞÍforÑ­»·£¬Ïàµ±ÓÚfor(int cell,cell<locationCells.length(),cell++)£¬±éÀúÕ½½¢ËùÔÚÎ»ÖÃ
-			if(cell==guess){//Èç¹ûÕ½½¢ËùÔÚÎ»ÖÃºÍÍæ¼Ò²Â²âÒ»ÖÂ£¬ÏÔÊ¾½á¹ûhit£¬»÷ÖĞÊı¼ÓÒ»
+	public String CheckYourself (String UserGuess){//åˆ¤å®š
+		int guess=Integer.parseInt(UserGuess);//å¼ºåˆ¶å°†ç©å®¶è¾“å…¥å­—ç¬¦å‹æ•°æ®è½¬æ¢æˆæ•°å­—å‹
+		String result="miss";//é»˜è®¤åˆ¤å®šä¸ºmiss
+		for (int cell :locationCells){//åŠ å¼ºå‹forå¾ªç¯ï¼Œç›¸å½“äºfor(int cell,cell<locationCells.length(),cell++)ï¼Œéå†æˆ˜èˆ°æ‰€åœ¨ä½ç½®
+			if(cell==guess){//å¦‚æœæˆ˜èˆ°æ‰€åœ¨ä½ç½®å’Œç©å®¶çŒœæµ‹ä¸€è‡´ï¼Œæ˜¾ç¤ºç»“æœhitï¼Œå‡»ä¸­æ•°åŠ ä¸€
 				result="hit";
 				numOfHits++;
 				break;
 			}
 		}
-		if (numOfHits==locationCells.length)//ÈôÍæ¼Ò»÷ÖĞÊıµÈÓÚÕ½½¢³¤¶È£¬ÏÔÊ¾kill
+		if (numOfHits==locationCells.length)//è‹¥ç©å®¶å‡»ä¸­æ•°ç­‰äºæˆ˜èˆ°é•¿åº¦ï¼Œæ˜¾ç¤ºkill
 		{
 			result="kill";
 		}
 		System.out.println(result);
-		return result;//·µ»Ø½á¹û
+		return result;//è¿”å›ç»“æœ
 	}
 }
 
-class GameHelper {//ÏÔÊ¾ÌáÊ¾ĞÅÏ¢£¬´¦ÀíÍæ¼ÒÊäÈëÊı×Ö
-	public String getUserInput (String prompt){//½«ÏëÒªÌáÊ¾µÄÎÄ×ÖÏÔÊ¾³öÀ´
-		String inputLine=null;//±£´æÍæ¼ÒÊäÈëÊı×Ö
+class GameHelper {//æ˜¾ç¤ºæç¤ºä¿¡æ¯ï¼Œå¤„ç†ç©å®¶è¾“å…¥æ•°å­—
+	public String getUserInput (String prompt){//å°†æƒ³è¦æç¤ºçš„æ–‡å­—æ˜¾ç¤ºå‡ºæ¥
+		String inputLine=null;//ä¿å­˜ç©å®¶è¾“å…¥æ•°å­—
 		System.out.print(prompt+" ");
-		try{//¶ÁÈëÍæ¼ÒÊäÈëµÄÊı×Ö£¬ÈôÎ´ÊäÈë£¬ÔòÅ×³öÒì³£²¢²¶»ñ
+		try{//è¯»å…¥ç©å®¶è¾“å…¥çš„æ•°å­—ï¼Œè‹¥æœªè¾“å…¥ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸å¹¶æ•è·
 			BufferedReader is =new BufferedReader(new InputStreamReader(System.in));
 			inputLine=is.readLine();
 			if (inputLine.length()==0)
@@ -69,5 +69,5 @@ class GameHelper {//ÏÔÊ¾ÌáÊ¾ĞÅÏ¢£¬´¦ÀíÍæ¼ÒÊäÈëÊı×Ö
 		return inputLine;
 	}
 }
-//bug:ÈôÍæ¼ÒÁ¬Ğø3´ÎÊäÈëÍ¬Ò»»÷ÖĞ×ø±ê£¬Õ½½¢»á³ÁÃ»£¬Âß¼­´íÎó¡£Ó¦¸Ã¼°Ê±É¾³ı±»»÷ÖĞµÄÊı×Ö
-//level up:ÏÂÒ»²½ÔÚ7*7µÄ¶şÎ¬Êı×éÖĞËæ»úÉú³É¶à¸öÕ½½¢£¬ÇÒÓĞºáÓĞ×İ
+//bug:è‹¥ç©å®¶è¿ç»­3æ¬¡è¾“å…¥åŒä¸€å‡»ä¸­åæ ‡ï¼Œæˆ˜èˆ°ä¼šæ²‰æ²¡ï¼Œé€»è¾‘é”™è¯¯ã€‚åº”è¯¥åŠæ—¶åˆ é™¤è¢«å‡»ä¸­çš„æ•°å­—
+//level up:ä¸‹ä¸€æ­¥åœ¨7*7çš„äºŒç»´æ•°ç»„ä¸­éšæœºç”Ÿæˆå¤šä¸ªæˆ˜èˆ°ï¼Œä¸”æœ‰æ¨ªæœ‰çºµ
