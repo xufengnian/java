@@ -32,7 +32,7 @@ public class GuessGame {
 		p2.Guess();
 		p3.Guess();
 		
-		//将3位Player生成的数字分别赋予猜测数
+		//将3位Player生成的数字分别赋予猜测数字
 		guessp1=p1.number;
 		System.out.println("Player1 guess number is "+guessp1);
 		
