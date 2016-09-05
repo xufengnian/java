@@ -1,5 +1,5 @@
 //比较有意思的一个音乐节拍小程序，一共16个节拍，循环播放，用户可以设定每一节拍演奏的乐器（0个到n个均可），播放，停止以及节奏的加快和减慢
-//Fileedit版添加serializlt按钮和restore按钮，考察对象序列化和反序列化，前者记录当前乐谱乐器选择情况，后者还原之前的乐器选择情况
+//Fileedit版本添加了serializlt按钮和restore按钮，考察对象序列化和反序列化，前者记录当前乐谱乐器选择情况，后者还原之前的乐器选择情况
 import javax.sound.midi.*;
 import javax.swing.*;
 import java.util.*;
